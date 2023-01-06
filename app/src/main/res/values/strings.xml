@@ -7,4 +7,6 @@
     <string name="player_setup_title">Enter your names</string>
     <string name="label1">Player 1</string>
     <string name="label2">Player 2</string>
+    <string name="play_again_btn">Play Again</string>
+    <string name="home_btn">Home</string>
 </resources>
