@@ -1,7 +1,16 @@
 package com.example.tictactoegame;
 
+import android.widget.Button;
+import android.widget.TextView;
+
 public class Gamelogic {
     private int[][] gameBoard;
+
+    private String[] playerNames = {"Player 1", "Player 2"};
+
+    private Button playAgainBtn, homeBtn;
+    private TextView playerTurn;
+    private String[] names;
 
     private int player = 1;
 
@@ -30,6 +39,22 @@ public class Gamelogic {
                 gameBoard[j][i] = 0;
             }
         }
+    }
+
+    public void setPlayAgainBtn(Button playAgainBtn) {
+        this.playAgainBtn = playAgainBtn;
+    }
+
+    public void setHomeBtn(Button homeBtn) {
+        this.homeBtn = homeBtn;
+    }
+
+    public void setPlayerTurn(TextView playerTurn) {
+        this.playerTurn = playerTurn;
+    }
+
+    public void setPlayerNames(String[] names) {
+        this.playerNames = playerNames;
     }
 
     public int[][] getGameBoard() {
