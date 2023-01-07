@@ -10,7 +10,6 @@ public class Gamelogic {
 
     private Button playAgainBtn, homeBtn;
     private TextView playerTurn;
-    private String[] names;
 
     private int player = 1;
 
@@ -26,6 +25,12 @@ public class Gamelogic {
     public boolean updateGameBoard(int row, int col) {
         if(gameBoard[row-1][col-1] == 0) {
             gameBoard[row-1][col-1] = player;
+
+            if(player == 1) {
+                playerTurn.setText(playerNames[1] + "'s turn");
+            } else {
+                playerTurn.setText(playerNames[0] + "'s turn");
+            }
 
             return true;
         } else {
@@ -53,7 +58,7 @@ public class Gamelogic {
         this.playerTurn = playerTurn;
     }
 
-    public void setPlayerNames(String[] names) {
+    public void setPlayerNames(String[] playerNames) {
         this.playerNames = playerNames;
     }
 
