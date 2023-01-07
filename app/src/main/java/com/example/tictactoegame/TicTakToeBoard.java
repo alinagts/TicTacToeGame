@@ -21,6 +21,8 @@ public class TicTakToeBoard extends View {
     private final int winnerLineColor;
     private final Gamelogic game;
 
+    private boolean winningLine = false;
+
     private final Paint paint = new Paint();
     private int cellSize = getWidth()/3;
 
@@ -73,13 +75,20 @@ public class TicTakToeBoard extends View {
             int row = (int) Math.ceil(y/cellSize);
             int col = (int) Math.ceil(x/cellSize);
 
-            if(game.updateGameBoard(row, col)) {
-                invalidate();
+            if (!winningLine) {
+                if(game.updateGameBoard(row, col)) {
+                    invalidate();
 
-                if(game.getPlayer() % 2 == 0) {
-                    game.setPlayer(game.getPlayer() - 1);
-                } else {
-                    game.setPlayer(game.getPlayer() + 1);
+                    if (game.winnerCheck()) {
+                        winningLine = true;
+                        invalidate();
+                    }
+
+                    if(game.getPlayer() % 2 == 0) {
+                        game.setPlayer(game.getPlayer() - 1);
+                    } else {
+                        game.setPlayer(game.getPlayer() + 1);
+                    }
                 }
             }
 
@@ -154,5 +163,6 @@ public class TicTakToeBoard extends View {
 
     public void resetGame() {
         game.resetGame();
+        winningLine = false;
     }
 }

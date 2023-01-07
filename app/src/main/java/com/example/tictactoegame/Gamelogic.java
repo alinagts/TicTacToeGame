@@ -1,5 +1,6 @@
 package com.example.tictactoegame;
 
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -38,12 +39,74 @@ public class Gamelogic {
         }
     }
 
+    public boolean winnerCheck() {
+        boolean isWinner = false;
+
+        for (int i = 0; i < 3; i++) {
+            if(gameBoard[i][0] == gameBoard[i][1] && gameBoard[i][0] == gameBoard[i][2] &&
+            gameBoard[i][0] != 0) {
+                isWinner = true;
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if(gameBoard[0][i] == gameBoard[1][i] && gameBoard[2][i] == gameBoard[0][i] &&
+                    gameBoard[0][i] != 0) {
+                isWinner = true;
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if(gameBoard[0][0] == gameBoard[1][1] && gameBoard[0][0] == gameBoard[2][2] &&
+                    gameBoard[0][0] != 0) {
+                isWinner = true;
+            }
+        }
+
+        for (int i = 0; i < 3; i++) {
+            if(gameBoard[2][0] == gameBoard[1][1] && gameBoard[2][0] == gameBoard[0][2] &&
+                    gameBoard[2][0] != 0) {
+                isWinner = true;
+            }
+        }
+
+        int boardFilled = 0;
+        for(int i = 0; i < 3; i++) {
+            for(int j = 0; j < 3; j++) {
+                if (gameBoard[i][j] != 0 ) {
+                    boardFilled += 1;
+                }
+            }
+        }
+
+        if (isWinner) {
+            playAgainBtn.setVisibility(View.VISIBLE);
+            homeBtn.setVisibility(View.VISIBLE);
+            playerTurn.setText(playerNames[player-1] + " Won!");
+            return true;
+        } else if(boardFilled == 9) {
+            playAgainBtn.setVisibility(View.VISIBLE);
+            homeBtn.setVisibility(View.VISIBLE);
+            playerTurn.setText("The score is equal!");
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public void resetGame() {
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {
                 gameBoard[j][i] = 0;
             }
         }
+
+        player = 1;
+
+        playAgainBtn.setVisibility(View.GONE);
+        homeBtn.setVisibility(View.GONE);
+
+        playerTurn.setText(playerNames[0] + "'s turn");
     }
 
     public void setPlayAgainBtn(Button playAgainBtn) {
