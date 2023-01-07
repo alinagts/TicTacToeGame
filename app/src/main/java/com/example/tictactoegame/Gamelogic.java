@@ -9,6 +9,8 @@ public class Gamelogic {
 
     private String[] playerNames = {"Player 1", "Player 2"};
 
+    private int[] winType = {-1, -1, -1};
+
     private Button playAgainBtn, homeBtn;
     private TextView playerTurn;
 
@@ -42,30 +44,38 @@ public class Gamelogic {
     public boolean winnerCheck() {
         boolean isWinner = false;
 
+        //horizontal
         for (int i = 0; i < 3; i++) {
             if(gameBoard[i][0] == gameBoard[i][1] && gameBoard[i][0] == gameBoard[i][2] &&
             gameBoard[i][0] != 0) {
+                winType = new int[] {i, 0, 1};
                 isWinner = true;
             }
         }
 
+        //vertical
         for (int i = 0; i < 3; i++) {
             if(gameBoard[0][i] == gameBoard[1][i] && gameBoard[2][i] == gameBoard[0][i] &&
                     gameBoard[0][i] != 0) {
+                winType = new int[] {0, i, 2};
                 isWinner = true;
             }
         }
 
+        //diagonal neg
         for (int i = 0; i < 3; i++) {
             if(gameBoard[0][0] == gameBoard[1][1] && gameBoard[0][0] == gameBoard[2][2] &&
                     gameBoard[0][0] != 0) {
+                winType = new int[] {0, 2, 3};
                 isWinner = true;
             }
         }
 
+        //diagonal pos
         for (int i = 0; i < 3; i++) {
             if(gameBoard[2][0] == gameBoard[1][1] && gameBoard[2][0] == gameBoard[0][2] &&
                     gameBoard[2][0] != 0) {
+                winType = new int[] {2, 2, 4};
                 isWinner = true;
             }
         }
@@ -135,5 +145,9 @@ public class Gamelogic {
 
     public int getPlayer() {
         return player;
+    }
+
+    public int[] getWinType() {
+        return winType;
     }
 }
