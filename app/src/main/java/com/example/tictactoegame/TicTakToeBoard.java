@@ -154,6 +154,26 @@ public class TicTakToeBoard extends View {
 
     }
 
+    private void drawHorizontalLine(Canvas canvas, int row, int col) {
+        canvas.drawLine(col, row*cellSize + (float) cellSize/2, cellSize*3,
+                row*cellSize + (float) cellSize/2, paint);
+    }
+
+    private void drawVerticalLine(Canvas canvas, int row, int col) {
+        canvas.drawLine(col*cellSize + (float) cellSize/2, row,
+                col*cellSize + (float) cellSize/2, cellSize*3, paint);
+    }
+
+    private void drawDiagonalLinePos(Canvas canvas) {
+        canvas.drawLine(0, cellSize*3,
+                cellSize*3, 0, paint);
+    }
+
+    private void drawDiagonalLineNeg(Canvas canvas) {
+        canvas.drawLine(0, 0,
+                cellSize*3, cellSize*3, paint);
+    }
+
     public void setUpGame(Button playAgainBtn, Button homeBtn, TextView playerDisplay, String[] names) {
         game.setPlayAgainBtn(playAgainBtn);
         game.setHomeBtn(homeBtn);
