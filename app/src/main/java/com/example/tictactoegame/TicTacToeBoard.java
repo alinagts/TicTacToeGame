@@ -13,23 +13,23 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
-public class TicTakToeBoard extends View {
+public class TicTacToeBoard extends View {
 
     private final int boardColor;
     private final int XColor;
     private final int OColor;
     private final int winnerLineColor;
-    private final Gamelogic game;
+    private final GameLogic game;
 
     private boolean winningLine = false;
 
     private final Paint paint = new Paint();
     private int cellSize = getWidth()/3;
 
-    public TicTakToeBoard(Context context, @Nullable AttributeSet attrs) {
+    public TicTacToeBoard(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
-        game = new Gamelogic();
+        game = new GameLogic();
 
         TypedArray a = context.getTheme().obtainStyledAttributes(attrs,
                 R.styleable.TicTakToeBoard, 0, 0);

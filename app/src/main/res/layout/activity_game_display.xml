@@ -53,7 +53,7 @@
             app:layout_constraintVertical_bias="0.0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.example.tictactoegame.TicTakToeBoard
+    <com.example.tictactoegame.TicTacToeBoard
         android:id="@+id/ticTakToeBoard"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class Gamelogic {
+public class GameLogic {
     private int[][] gameBoard;
 
     private String[] playerNames = {"Player 1", "Player 2"};
@@ -16,7 +16,7 @@ public class Gamelogic {
 
     private int player = 1;
 
-    Gamelogic() {
+    GameLogic() {
         gameBoard = new int[3][3];
         for(int i = 0; i < 3; i++) {
             for(int j = 0; j < 3; j++) {
