@@ -61,6 +61,11 @@ public class TicTakToeBoard extends View {
 
         drawGameBoard(canvas);
         drawMarkers(canvas);
+
+        if(winningLine) {
+            paint.setColor(winnerLineColor);
+            drawWinningLine(canvas);
+        }
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -172,6 +177,28 @@ public class TicTakToeBoard extends View {
     private void drawDiagonalLineNeg(Canvas canvas) {
         canvas.drawLine(0, 0,
                 cellSize*3, cellSize*3, paint);
+    }
+
+    public void drawWinningLine(Canvas canvas) {
+        int row = game.getWinType()[0];
+        int col = game.getWinType()[1];
+
+
+        switch (game.getWinType()[2]) {
+            case 1:
+                drawHorizontalLine(canvas, row, col);
+                break;
+            case 2:
+                drawVerticalLine(canvas, row, col);
+                break;
+            case 3:
+                drawDiagonalLineNeg(canvas);
+                break;
+            case 4:
+                drawDiagonalLinePos(canvas);
+                break;
+
+        }
     }
 
     public void setUpGame(Button playAgainBtn, Button homeBtn, TextView playerDisplay, String[] names) {
